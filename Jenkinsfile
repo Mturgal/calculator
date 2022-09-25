@@ -9,6 +9,11 @@ pipeline {
     stage ("Unit test") {
       steps {
         sh "./mvnw test"
+        publishHTML (target: [
+          reportDir: 'target/site/jacoco/',
+          reportFiles: 'index.html',
+          reportName: "JaCoCo Report"
+          ])
      }
   }
 }
